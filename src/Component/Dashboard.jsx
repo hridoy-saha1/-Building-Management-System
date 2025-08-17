@@ -3,8 +3,9 @@ import { Link, Outlet, useNavigate } from "react-router";
 import { AuthContext } from "../Auth/AuthContext";
 import {
   FaUser, FaBullhorn, FaCreditCard, FaListAlt,
-  FaHome, FaUsers, FaMoneyBillWave, FaArrowLeft
+  FaHome, FaUsers, FaMoneyBillWave, FaArrowLeft, FaChartPie
 } from "react-icons/fa";
+import OverviewPage from "./OverviewPage";
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
@@ -15,7 +16,9 @@ const Dashboard = () => {
     const fetchUserRole = async () => {
       if (!user?.email) return;
       try {
-        const res = await fetch(`https://building-server-six.vercel.app/api/users/${user.email}`);
+        const res = await fetch(
+          `https://building-server-six.vercel.app/api/users/${user.email}`
+        );
         const data = await res.json();
         setRole(data.role);
       } catch (error) {
@@ -37,21 +40,41 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold text-center mb-6">🏢 Dashboard</h1>
 
         <nav className="space-y-2">
-          <Link to="/dashboard/profile" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+         
+          <Link
+            to="/dashboard"
+            className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+          >
+            <FaChartPie /> Overview
+          </Link>
+
+          <Link
+            to="/dashboard/profile"
+            className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+          >
             <FaUser /> My Profile
           </Link>
 
-          <Link to="/dashboard/announcements" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+          <Link
+            to="/dashboard/announcements"
+            className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+          >
             <FaBullhorn /> Announcements
           </Link>
 
           {/* Member Routes */}
           {role === "member" && (
             <>
-              <Link to="/dashboard/make-payment" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/make-payment"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaCreditCard /> Make Payment
               </Link>
-              <Link to="/dashboard/payment-history" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/payment-history"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaListAlt /> Payment History
               </Link>
             </>
@@ -60,16 +83,28 @@ const Dashboard = () => {
           {/* Admin Routes */}
           {role === "admin" && (
             <>
-              <Link to="/dashboard/manage-members" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/manage-members"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaUsers /> Manage Members
               </Link>
-              <Link to="/dashboard/agreementRequest" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/agreementRequest"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaHome /> Agreement Requests
               </Link>
-              <Link to="/dashboard/manage-coupons" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/manage-coupons"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaMoneyBillWave /> Manage Coupons
               </Link>
-              <Link to="/dashboard/make-announcement" className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2">
+              <Link
+                to="/dashboard/make-announcement"
+                className="block hover:bg-blue-700 p-2 rounded flex items-center gap-2"
+              >
                 <FaBullhorn /> Make Announcement
               </Link>
             </>

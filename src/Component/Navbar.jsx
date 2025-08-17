@@ -36,7 +36,7 @@ const Navbar = () => {
   const loggedInRoutes = [
     { path: "/", label: "Home" },
     { path: "/apartments", label: "Apartments" },
-    { path: "/announcements", label: "Announcements" },
+   
     { path: "/dashboard", label: "Dashboard" },
   ];
 

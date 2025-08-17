@@ -40,9 +40,10 @@ const Coupon = () => {
                 <span className="bg-blue-600 text-white px-3 py-1 rounded-full font-semibold tracking-wide">
                   {discount}% OFF
                 </span>
-                <span className="text-sm text-gray-500 italic">Code:</span>
+               
+                <h3 className="text-2xl font-extrabold text-blue-700 mb-2"> <span className="text-sm mr-4 text-gray-500 italic">Code:</span>{code}</h3>
               </div>
-              <h3 className="text-2xl font-extrabold text-blue-700 mb-2">{code}</h3>
+              
               <p className="text-gray-600">{description || "Use this coupon to save on your rent!"}</p>
             </div>
           ))}

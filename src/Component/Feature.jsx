@@ -2,30 +2,31 @@ import React from 'react';
 
 const Feature = () => {
 
-    const features = [
+  const features = [
     {
       title: "Smart Home System",
-      desc: "Velit irure occaecat do consectetur dolore officia magna ut anim ut.",
+      desc: "Control lighting, temperature, and appliances with just a tap or voice command for ultimate convenience.",
       icon: "🏠",
     },
     {
       title: "Solar Energy Panels",
-      desc: "Velit irure occaecat do consectetur dolore officia magna ut anim ut.",
+      desc: "Eco-friendly solar panels reduce energy bills while powering your home sustainably.",
       icon: "☀️",
     },
     {
       title: "Central Air Conditioning",
-      desc: "Velit irure occaecat do consectetur dolore officia magna ut anim ut.",
+      desc: "Enjoy consistent comfort throughout your home with advanced climate control.",
       icon: "❄️",
     },
     {
       title: "Home Security System",
-      desc: "Velit irure occaecat do consectetur dolore officia magna ut anim ut.",
+      desc: "State-of-the-art security cameras and alarms keep your family safe 24/7.",
       icon: "🔒",
     },
   ];
-    return (
-         <section className="py-16 px-6 lg:px-20 bg-white">
+
+  return (
+    <section className="py-16 px-6 lg:px-20 bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Side */}
@@ -34,15 +35,12 @@ const Feature = () => {
             Home Overview
           </span>
           <h2 className="mt-4 text-4xl font-bold text-gray-900 leading-tight">
-            Luxury living where comfort meets timeless style, effortlessly
+            Luxury living where comfort meets timeless style
           </h2>
           <p className="mt-4 text-gray-500">
-            Non anim in pariatur in ex excepteur commodo do officia amet
-            incididunt ullamco nostrud aliquip minim magna ut esse dolore.
+            Discover modern homes designed for convenience, elegance, and sustainable living. Every detail is crafted to enhance your lifestyle.
           </p>
-          <button className="mt-6 bg-[#b88648] text-white px-6 py-3 rounded-md font-semibold shadow hover:bg-[#a07035] transition">
-            SCHEDULE A VISIT
-          </button>
+         
         </div>
 
         {/* Right Side */}
@@ -58,7 +56,7 @@ const Feature = () => {
 
       </div>
     </section>
-    );
+  );
 };
 
 export default Feature;

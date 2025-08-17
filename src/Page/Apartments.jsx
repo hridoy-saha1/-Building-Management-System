@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../Auth/AuthContext";
-import { toast } from "react-toastify"; 
+import { toast } from "react-toastify";
 
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
@@ -118,37 +118,49 @@ const Apartments = () => {
       </div>
 
       {/* Apartment Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Apartment Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {loading ? (
           <p>Loading...</p>
         ) : (
           apartments.map((apt) => (
             <div
               key={apt._id}
-              className="bg-white border rounded shadow-md overflow-hidden"
+              className="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
             >
-              <img src={apt.image} className="w-full h-48 object-cover" />
-              <div className="p-4 space-y-1">
-                <h3 className="text-lg font-bold">Apt #{apt.apartmentNo}</h3>
-                <p>Floor: {apt.floor}</p>
-                <p>Block: {apt.block}</p>
-                <p>Rent: ৳{apt.rent}</p>
+              <div className="relative">
+                <img
+                  src={apt.image}
+                  alt={`Apartment ${apt.apartmentNo}`}
+                  className="w-full h-56 object-cover"
+                />
+                <span className="absolute top-3 left-3 bg-blue-600 text-white text-sm px-2 py-1 rounded">
+                  Rent: ৳{apt.rent}
+                </span>
+              </div>
+              <div className="p-5 space-y-2">
+                <h3 className="text-xl font-semibold text-gray-800">
+                  Apt #{apt.apartmentNo}
+                </h3>
+                <p className="text-gray-600">Floor: {apt.floor}</p>
+                <p className="text-gray-600">Block: {apt.block}</p>
                 <button
                   onClick={() => handleAgreement(apt)}
                   disabled={userHasAgreement}
-                  className={`mt-2 px-3 py-1 rounded w-full ${
-                    userHasAgreement
-                      ? "bg-gray-400 text-white cursor-not-allowed"
-                      : "bg-blue-500 text-white hover:bg-blue-600"
-                  }`}
+                  className={`mt-3 w-full py-2 rounded-lg font-medium transition-colors duration-300 border-2 ${userHasAgreement
+                      ? "border-gray-400 text-gray-400 cursor-not-allowed bg-transparent"
+                      : "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                    }`}
                 >
                   {userHasAgreement ? "Already Applied" : "Apply for Agreement"}
                 </button>
+
               </div>
             </div>
           ))
         )}
       </div>
+
 
       {/* Pagination */}
       <div className="flex justify-center mt-8 gap-2">
@@ -156,9 +168,8 @@ const Apartments = () => {
           <button
             key={i}
             onClick={() => setPage(i + 1)}
-            className={`px-3 py-1 border rounded ${
-              page === i + 1 ? "bg-blue-500 text-white" : "bg-gray-100"
-            }`}
+            className={`px-3 py-1 border rounded ${page === i + 1 ? "bg-blue-500 text-white" : "bg-gray-100"
+              }`}
           >
             {i + 1}
           </button>

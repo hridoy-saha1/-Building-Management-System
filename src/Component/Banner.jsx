@@ -4,9 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import slide1 from '../assets/Bannerphotos/slide.jpg';
-import slide2 from '../assets/Bannerphotos/slide1.jpg';
-import slide3 from '../assets/Bannerphotos/slide2.jpg';
+
 import banner from '../assets/Bannerphotos/Banner1.jpg';
 import { Link } from 'react-router';
 

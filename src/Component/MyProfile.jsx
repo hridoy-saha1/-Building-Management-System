@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
 import axios from 'axios';
+import { FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);
@@ -43,25 +44,37 @@ const MyProfile = () => {
     fetchUserRoleAndData();
   }, [user]);
 
-  if (loading) return <p className="p-6">Loading profile...</p>;
+  if (loading) return <p className="p-6 text-center">Loading profile...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-blue-700">👤 My Profile</h2>
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded shadow-md">
+      <h2 className="text-3xl font-bold mb-6 text-blue-700">👤 My Profile</h2>
 
-      <div className="space-y-3 mb-6">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
         {user?.photoURL && (
-          <img src={user.photoURL} alt="Profile" className="w-24 h-24 rounded-full object-cover" />
+          <img
+            src={user.photoURL}
+            alt="Profile"
+            className="w-32 h-32 rounded-full object-cover border-2 border-blue-500"
+          />
         )}
-        <div><strong>Name:</strong> {user?.displayName || 'N/A'}</div>
-        <div><strong>Email:</strong> {user?.email}</div>
-        <div><strong>Role:</strong> {role}</div>
+        <div className="space-y-2 text-lg">
+          <div><strong>Name:</strong> {user?.displayName || 'N/A'}</div>
+          <div><strong>Email:</strong> {user?.email}</div>
+          <div className="flex items-center gap-2">
+            <FaPhone /> <span>{user?.phoneNumber || 'Not Provided'}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaMapMarkerAlt /> <span>{user?.address || 'Not Provided'}</span>
+          </div>
+          <div><strong>Role:</strong> {role}</div>
+        </div>
       </div>
 
       {/* 🔷 Member Info */}
       {role === 'member' && (
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold mb-2 text-green-600">🏠 Member Agreement Info</h3>
+        <div className="space-y-2 mb-6 p-4 border-l-4 border-green-500 bg-green-50 rounded">
+          <h3 className="text-2xl font-semibold mb-2 text-green-600">🏠 Member Agreement Info</h3>
           <div><strong>Agreement Date:</strong> {agreement ? new Date(agreement.appliedAt).toLocaleDateString() : 'None'}</div>
           <div><strong>Floor:</strong> {agreement?.floor || 'None'}</div>
           <div><strong>Block:</strong> {agreement?.block || 'None'}</div>
@@ -71,16 +84,7 @@ const MyProfile = () => {
       )}
 
       {/* 🟡 Admin Info */}
-      {role === 'admin' && adminInfo && (
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold mb-2 text-purple-600">📊 Admin Dashboard Info</h3>
-          <div><strong>Total Rooms:</strong> {adminInfo.totalRooms}</div>
-          <div><strong>Available Rooms:</strong> {adminInfo.availablePercentage}%</div>
-          <div><strong>Unavailable Rooms (Agreed):</strong> {adminInfo.unavailablePercentage}%</div>
-          <div><strong>Total Users:</strong> {adminInfo.totalUsers}</div>
-          <div><strong>Members:</strong> {adminInfo.totalMembers}</div>
-        </div>
-      )}
+      
     </div>
   );
 };

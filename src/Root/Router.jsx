@@ -19,6 +19,7 @@ import ManageCupon from "../Component/ManageCupon";
 import MakePayment from "../Component/MakePayment";
 import PaymentStory from "../Component/PaymentStory";
 import Error from "../Page/Error";
+import OverviewPage from "../Component/OverviewPage";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
           </PrivateRout>
         ),
         children: [
+          {
+        index: true,
+        element:<OverviewPage></OverviewPage>
+         },
           {
             path: "profile",
             element: <MyProfile />
