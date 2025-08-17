@@ -44,7 +44,7 @@ const Navbar = () => {
     <>
      <nav className="bg-white text-black shadow-md sticky top-0 z-50 w-full">
   <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    
+    {/* Logo & Brand */}
     <div className="flex items-center gap-2 text-3xl font-bold tracking-wide">
       <img src={photo} alt="Logo" className="h-10 w-10 rounded-full shadow-md" />
       <span>OneBuilding</span>
