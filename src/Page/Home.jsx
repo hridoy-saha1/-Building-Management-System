@@ -6,6 +6,7 @@ import LocationSection from '../Component/LocationSection';
 import RoomTabs from '../Component/RoomTabs';
 import Feature from '../Component/Feature';
 import HighlightsNearby from '../Component/HighlightsNearby';
+import ScheduleVisit from '../Component/ScheduleVisit';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
          <HighlightsNearby></HighlightsNearby>
        <AboutBuilding></AboutBuilding>
        <Coupon></Coupon>
+       <ScheduleVisit></ScheduleVisit>
        <LocationSection></LocationSection>        
         </>
       
