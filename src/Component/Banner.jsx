@@ -7,47 +7,29 @@ import 'swiper/css/navigation';
 import slide1 from '../assets/Bannerphotos/slide.jpg';
 import slide2 from '../assets/Bannerphotos/slide1.jpg';
 import slide3 from '../assets/Bannerphotos/slide2.jpg';
+import banner from '../assets/Bannerphotos/Banner1.jpg';
+import { Link } from 'react-router';
 
 const Banner = () => {
-  const images = [slide1, slide2, slide3];
-
   return (
-    <div className="w-full rounded-xl overflow-hidden shadow-xl relative">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        pagination={{ clickable: true }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="w-full"
-      >
-        {images.map((img, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px] relative">
-              <img
-                src={img}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-              {/* Text Overlay */}
-              <div className="absolute inset-0  bg-opacity-40 flex flex-col items-center justify-center text-center text-white px-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-                  Welcome to OneBuilding
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg">
-                  Smart living for a smarter community
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div 
+      className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[550px] 
+                 rounded-xl overflow-hidden shadow-xl relative flex flex-col items-center justify-center text-center text-white px-4
+                  bg-opacity-60 bg-blend-overlay bg-cover bg-center"
+      style={{ backgroundImage: `url(${banner})` }}
+    >
+      <h2 className="text-2xl text-amber-200 sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 drop-shadow-lg">
+        Welcome to OneBuilding
+      </h2>
+      <p className="text-sm text-black font-bold sm:text-base md:text-lg lg:text-xl mb-6 max-w-2xl drop-shadow-md">
+        Smart living for a smarter community
+      </p>
+      <Link to='/apartments' ><button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-full shadow-md transition">
+        Book Apartment
+      </button></Link>
     </div>
   );
 };
+
 
 export default Banner;
